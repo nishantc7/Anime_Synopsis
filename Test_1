@@ -7,7 +7,7 @@ import lxml
 res=requests.get("https://myanimelist.net/anime/38691/Dr_Stone")
 #res_content=res.content
 soup=BeautifulSoup(res.text,"lxml")
-soup_re=soup.select("span", itemprop="description")
+soup_re=soup.find_all("span", itemprop="description")
 #print(soup.title.string)
 for i in soup_re:
 	print(i.text)
