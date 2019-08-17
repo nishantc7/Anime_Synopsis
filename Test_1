@@ -1,0 +1,14 @@
+from bs4 import BeautifulSoup
+import requests
+import lxml
+#Name of the anime to be searched
+#Name_anime=input("Enter the name of the anime to search\n")
+#requesting main
+res=requests.get("https://myanimelist.net/anime/38691/Dr_Stone")
+#res_content=res.content
+soup=BeautifulSoup(res.text,"lxml")
+soup_re=soup.select("span", itemprop="description")
+#print(soup.title.string)
+for i in soup_re:
+	print(i.text)
+#def scrapper(Name_anime):
