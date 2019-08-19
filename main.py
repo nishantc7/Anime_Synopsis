@@ -36,7 +36,10 @@ def scrapeit(name_anime):
 def click():
 	entered_text=textentry.get()
 	output.delete(0.0, END)
-	defination=scrapeit(entered_text)
+	try:
+		defination=scrapeit(entered_text)
+	except:
+		defination="Do you even watch Anime?"
 	output.insert(END,defination)
 
 
