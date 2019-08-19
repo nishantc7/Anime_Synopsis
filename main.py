@@ -11,7 +11,6 @@ window.configure(background="black")
 
 #scraping function
 def scrapeit(name_anime):
-	#ff
 	name_update=name_anime.replace (" ","%20")
 	search_string_1="https://myanimelist.net/search/all?q="
 	final_search=search_string_1+name_update
@@ -25,10 +24,8 @@ def scrapeit(name_anime):
 		the_final_link=link['href']
 		#print(the_final_link)
 	res=requests.get(the_final_link)
-#res_content=res.content
 	soup=BeautifulSoup(res.text,"lxml")
 	soup_re=soup.find_all("span", itemprop="description")
-#print(soup.title.string)
 	for i in soup_re:
 		return(i.text)
 
