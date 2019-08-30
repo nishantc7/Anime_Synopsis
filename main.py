@@ -8,6 +8,7 @@ import re
 window = Tk()
 window.title("Anime Synopsis \n")
 window.configure(background="black")
+window.geometry("1280x720")
 
 #scraping function
 def scrapeit(name_anime):
