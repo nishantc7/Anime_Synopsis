@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 import lxml
 import re
+import tkinter.scrolledtext as tkscrolled
 
 #main window
 window = Tk()
@@ -46,25 +47,29 @@ def click():
 
 #background 
 picture_1=PhotoImage(file="./idk_cool_flower.gif")
-Label(window, image=picture_1, bg="black").grid(row=2,column=0,sticky=W)
+Label(window, image=picture_1, bg="black").grid(row=2,column=0,sticky=N+S+E+W)
 
 
 #label1
-Label(window, text="For which anime would you like to find the Synopsis?\n", bg="black", fg="white", font="none 12 bold" ).grid(row=3,column=0,sticky=W)
+Label(window, text="For which anime would you like to find the Synopsis?\n", bg="black", fg="white", font="none 12 bold" ).grid(row=3,column=0,sticky=N+S+E+W)
+
 
 #entry_box_name
 textentry = Entry(window, width=20, bg="white")
-textentry.grid(row=4, column=0, sticky=W)
+textentry.grid(row=4, column=0,sticky=N+S+E+W)
+
 
 #submit button
-Button(window, text="Submit", width=6, command=click).grid(row=5, column=0, sticky=W)
+Button(window, text="Submit", width=6, command=click).grid(row=5, column=0,sticky=W)
+
 
 #label2
-Label(window,text="Synopsis:\n", bg="black", fg="white", font="none 12 bold").grid(row=6, column=0, sticky=W)
+Label(window,text="Synopsis:\n", bg="black", fg="white", font="none 12 bold").grid(row=6, column=0,sticky=N+S+E+W)
+
 
 #output text
-output=Text(window,width=100, height=30, wrap=WORD, background="white")
-output.grid(row=7, column=0, columnspan=3, sticky=W)
+output=tkscrolled.ScrolledText(window,width=100, height=6, wrap=WORD, background="white")
+output.grid(row=7, column=0, columnspan=3,sticky=N+S+E+W)
 
 #exit function
 def close_window():
@@ -74,9 +79,11 @@ def close_window():
 
 
 #exit label
-Label(window,text="Click here to exit\n", bg="black", fg="white", font="none 12 bold").grid(row=0, column=0, sticky=W)
+Label(window,text="Click here to exit\n", bg="black", fg="white", font="none 12 bold").grid(row=0, column=0,sticky=N+S+E+W)
+
 #exit button
-Button(window,text="Exit", width=14, command=close_window).grid(row=1, column=0, sticky=W)
+Button(window,text="Exit", width=14, command=close_window).grid(row=1, column=0,sticky=N+S+E+W)
+
 
 #mainloop
 window.mainloop()
