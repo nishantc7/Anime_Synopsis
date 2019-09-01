@@ -1,8 +1,6 @@
 from tkinter import *
 from additional_file import *
 the_name="hero"
-
-
 def when_called():
 
 	def input_function():
