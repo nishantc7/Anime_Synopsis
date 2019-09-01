@@ -52,12 +52,12 @@ def the_function(the_name):
 	Label(window, image=picture_1, bg="black").grid(row=2,column=0,sticky=N+S+E+W)
 
 	#label2
-	Label(window,text="Synopsis:\n", bg="black", fg="white", font="none 12 bold").grid(row=6, column=0,sticky=N+S+E+W)
+	Label(window,text="Synopsis:\n", bg="black", fg="white", font="none 12 bold").grid(row=0, column=0,sticky=N+S+E+W)
 
 
 	#output text
 	output=tkscrolled.ScrolledText(window,width=100, height=6, wrap=WORD, background="white")
-	output.grid(row=7, column=0, columnspan=3,sticky=N+S+E+W)
+	output.grid(row=1, column=0, columnspan=3,sticky=N+S+E+W)
 
 	output.delete(0.0, END)
 	try:
@@ -72,10 +72,10 @@ def the_function(the_name):
 		exit()
 
 	#exit label
-	Label(window,text="Click here to exit\n", bg="black", fg="white", font="none 12 bold").grid(row=0, column=0,sticky=N+S+E+W)
+	Label(window,text="Click here to exit\n", bg="black", fg="white", font="none 12 bold").grid(row=4, column=0,sticky=N+S+E+W)
 
 	#exit button
-	Button(window,text="Exit", width=14, command=close_window).grid(row=1, column=0,sticky=N+S+E+W)
+	Button(window,text="Exit", width=14, command=close_window).grid(row=5, column=0,sticky=N+S+E+W)
 
 	#mainloop
 	window.mainloop()
