@@ -6,7 +6,7 @@ import re
 import tkinter.scrolledtext as tkscrolled
 #GitHub link to the application: https://github.com/hardikvasa/google-images-download
 from google_images_download import google_images_download
-
+from PIL import ImageTk, Image
 
 def the_function(the_name):
 	the_anime=the_name
@@ -58,25 +58,21 @@ def the_function(the_name):
 		indexx=list_re.index("Status:",30)
 		status_1=str(list_re[indexx+1])
 		return status_1
-
-
-
 		
 
 	#background 
 	response = google_images_download.googleimagesdownload()   #class instantiation
-	arguments = {"keywords":str(the_name),"limit":1,"format":"gif","size":"icon","silent_mode":1}   #creating list of arguments
+	arguments = {"keywords":str(the_name),"limit":1,"format":"jpg","size":"icon","silent_mode":1}   #creating list of arguments
 	paths = response.download(arguments)
 	path_1=str(paths[0].get(str(the_name)))
 	path_2=path_1.replace('[','')
 	path_3=path_2.replace(']','') 
 	path_4=path_3.replace("'",'')
-	picture_1=PhotoImage(file=path_4)
-	Label(window, image=picture_1, bg="black").grid(row=2,column=0,sticky=N+S+E+W)
-
+	#picture_1=PhotoImage(file=path_4)
+	img = ImageTk.PhotoImage(Image.open(path_4))
+	Label(window, image=img, bg="black").grid(row=2,column=0,sticky=N+S+E+W)
 	#label2
 	Label(window,text="Synopsis:\n", bg="black", fg="white", font="none 12 bold").grid(row=0, column=0,sticky=N+S+E+W)
-
 
 	#output text
 	output=tkscrolled.ScrolledText(window,width=100, height=6, wrap=WORD, background="white")
