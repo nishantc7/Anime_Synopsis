@@ -1,7 +1,7 @@
 from tkinter import *
 from bs4 import BeautifulSoup
 import requests
-import lxml
+from lxml import html
 import re
 import tkinter.scrolledtext as tkscrolled
 #GitHub link to the application: https://github.com/hardikvasa/google-images-download
@@ -30,6 +30,10 @@ def the_function(the_name):
 		for link in search_soup.find_all('a', attrs={'class' : 'hoverinfo_trigger fw-b fl-l'},limit=1):
 
 			the_final_link=link['href']
+
+		return the_final_link
+
+	def defineit(the_final_link):
 		res=requests.get(the_final_link)
 	#res_content=res.content
 		soup=BeautifulSoup(res.text,"lxml")
@@ -37,6 +41,25 @@ def the_function(the_name):
 	#print(soup.title.string)
 		for i in soup_re:
 			return(i.text)
+
+	def stateit(the_anime_link):
+
+		res=requests.get(the_anime_link)
+		soup=BeautifulSoup(res.text,"lxml")
+		soup_re=soup.findAll("div",{ "id" : "content" })
+		for i in soup_re:
+
+			trash=i.text
+		def Convert(string):
+			li=list(string.split("\n"))
+			return li
+  
+		list_re=Convert(trash)
+		indexx=list_re.index("Status:",30)
+		status_1=str(list_re[indexx+1])
+		return status_1
+
+
 
 		
 
@@ -60,11 +83,22 @@ def the_function(the_name):
 	output.grid(row=1, column=0, columnspan=3,sticky=N+S+E+W)
 
 	output.delete(0.0, END)
+	Label(window,text="\nStatus:",bg="black",fg="white",font="none 12 bold").grid(row=4,column=0,sticky=W)
+	output_status=Text(window,width=50, height=2, wrap=WORD, background="white")
+	output_status.grid(row=4, column=1, columnspan=1, sticky=W)
+	output_status.delete(0.0,END)
+	
+
+
 	try:
-		defination=scrapeit(the_name)
+		the_anime_link=scrapeit(the_name)
+		defination=defineit(the_anime_link)
+		status=stateit(the_anime_link)
+		
 	except:
 		defination="Do you even watch Anime?"
 	output.insert(END,defination)
+	output_status.insert(END,status)
 		
 	#exit function
 	def close_window():
@@ -72,10 +106,10 @@ def the_function(the_name):
 		exit()
 
 	#exit label
-	Label(window,text="Click here to exit\n", bg="black", fg="white", font="none 12 bold").grid(row=4, column=0,sticky=N+S+E+W)
+	Label(window,text="Click here to exit\n", bg="black", fg="white", font="none 12 bold").grid(row=6, column=0,sticky=N+S+E+W)
 
 	#exit button
-	Button(window,text="Exit", width=14, command=close_window).grid(row=5, column=0,sticky=N+S+E+W)
+	Button(window,text="Exit", width=14, command=close_window).grid(row=7, column=0,sticky=N+S+E+W)
 
 	#mainloop
 	window.mainloop()
