@@ -1,7 +1,6 @@
 from tkinter import *
 from additional_file import *
 
-
 def when_called():
 
 	def input_function():
