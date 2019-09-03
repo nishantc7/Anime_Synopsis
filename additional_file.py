@@ -21,7 +21,7 @@ def the_function(the_name):
 	def scrapeit(name_anime):
 		anime_name=name_anime
 		name_update=name_anime.replace (" ","%20")
-		search_string_1="https://myanimelist.net/search/all?q="
+		search_string_1="https://myanimelist.net/anime.php?q="
 		final_search=search_string_1+name_update
 		#print(final_search)
 		search_init=requests.get(final_search)
